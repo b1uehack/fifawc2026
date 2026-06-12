@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FIFA World Cup 2026 Live Arena Dashboard</title>
+    <!-- Google Fonts: Outfit & Space Grotesk for sports-futuristic feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app" class="dashboard-container">
+      
+      <!-- Top Header Navigation & Controls -->
+      <header class="app-header">
+        <div class="header-brand">
+          <span class="live-indicator-dot pulsating"></span>
+          <h1 class="brand-title">FIFA 2026 <span class="accent-text">LIVE ARENA</span></h1>
+        </div>
+        
+        <div class="header-center-info">
+          <div class="info-item">
+            <span class="info-label">LIVE STATUS</span>
+            <span class="info-value text-green" id="simulation-status">MATCHDAY SIM ACTIVE</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">LOCAL TIME</span>
+            <span class="info-value" id="current-time">00:00:00 AM</span>
+          </div>
+        </div>
+
+        <div class="header-controls">
+          <button id="btn-pause-sim" class="btn btn-secondary" title="Pause live update simulation">
+            <span class="icon">⏸</span> Pause Sim
+          </button>
+          <button id="btn-reset-sim" class="btn btn-secondary" title="Reset all matches and scores">
+            <span class="icon">🔄</span> Reset
+          </button>
+          <div class="speed-select-container">
+            <label for="sim-speed">Speed:</label>
+            <select id="sim-speed" class="select-dropdown">
+              <option value="1">1x (Real)</option>
+              <option value="5" selected>5x (Fast)</option>
+              <option value="20">20x (Super)</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Dashboard Grid Layout -->
+      <main class="dashboard-grid">
+        
+        <!-- COLUMN 1: Hero Live Match Widget & Statistics -->
+        <section class="grid-card hero-card" id="hero-match-section">
+          <div class="card-header">
+            <h2 class="card-title">Live Tracking Center</h2>
+            <div class="match-stage-badge" id="hero-match-stage">Group Stage • Group A</div>
+          </div>
+
+          <div class="hero-match-display">
+            <!-- Team 1 -->
+            <div class="team-display left">
+              <div class="team-flag-placeholder" id="hero-team1-flag">🇺🇸</div>
+              <h3 class="team-name" id="hero-team1-name">United States</h3>
+              <span class="team-role">HOST</span>
+            </div>
+
+            <!-- Score / Versus info -->
+            <div class="score-display-container">
+              <div class="live-badge">LIVE</div>
+              <div class="score-numbers">
+                <span class="score-digit" id="hero-score-1">0</span>
+                <span class="score-divider">:</span>
+                <span class="score-digit" id="hero-score-2">0</span>
+              </div>
+              <div class="match-time" id="hero-match-time">12'</div>
+            </div>
+
+            <!-- Team 2 -->
+            <div class="team-display right">
+              <div class="team-flag-placeholder" id="hero-team2-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+              <h3 class="team-name" id="hero-team2-name">England</h3>
+              <span class="team-role">CHALLENGER</span>
+            </div>
+          </div>
+
+          <!-- Simulation Quick Triggers -->
+          <div class="simulation-triggers">
+            <button id="btn-goal-1" class="btn btn-goal" data-team="1">⚽ Goal USA</button>
+            <button id="btn-shootout" class="btn btn-event">💥 Random Event</button>
+            <button id="btn-goal-2" class="btn btn-goal" data-team="2">⚽ Goal ENG</button>
+          </div>
+
+          <!-- Stadium and Weather Overlay Info -->
+          <div class="match-meta-info">
+            <div class="meta-item">
+              <span class="meta-label">VENUE</span>
+              <span class="meta-value" id="hero-match-venue">MetLife Stadium, NY/NJ</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">ATTENDANCE</span>
+              <span class="meta-value" id="hero-match-attendance">82,500</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">VENUE WEATHER</span>
+              <span class="meta-value" id="hero-match-weather">🌧️ 18°C, Light Rain</span>
+            </div>
+          </div>
+
+          <!-- Live Match Stats Grid -->
+          <div class="stats-panel">
+            <h4 class="section-subtitle">Match Statistics</h4>
+            
+            <!-- Stat 1: Possession -->
+            <div class="stat-row">
+              <div class="stat-meta">
+                <span class="stat-value-left" id="stat-pos-1">50%</span>
+                <span class="stat-name">POSSESSION</span>
+                <span class="stat-value-right" id="stat-pos-2">50%</span>
+              </div>
+              <div class="stat-bar-container">
+                <div class="stat-bar-left" id="bar-pos-1" style="width: 50%;"></div>
+                <div class="stat-bar-right" id="bar-pos-2" style="width: 50%;"></div>
+              </div>
+            </div>
+
+            <!-- Stat 2: Shots -->
+            <div class="stat-row">
+              <div class="stat-meta">
+                <span class="stat-value-left" id="stat-shots-1">4</span>
+                <span class="stat-name">SHOTS (ON TARGET)</span>
+                <span class="stat-value-right" id="stat-shots-2">3</span>
+              </div>
+              <div class="stat-bar-container">
+                <div class="stat-bar-left" id="bar-shots-1" style="width: 55%;"></div>
+                <div class="stat-bar-right" id="bar-shots-2" style="width: 45%;"></div>
+              </div>
+            </div>
+
+            <!-- Stat 3: Fouls & Cards -->
+            <div class="cards-stat-row">
+              <div class="cards-count-left">
+                <span class="yellow-card-stat" id="stat-yc-1">0</span> <span class="red-card-stat" id="stat-rc-1">0</span>
+              </div>
+              <span class="stat-name">CARDS (Y / R)</span>
+              <div class="cards-count-right">
+                <span class="yellow-card-stat" id="stat-yc-2">0</span> <span class="red-card-stat" id="stat-rc-2">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Match Timeline Ticker -->
+          <div class="timeline-panel">
+            <h4 class="section-subtitle">Live Match Timeline</h4>
+            <div class="timeline-container" id="timeline-events">
+              <div class="timeline-empty">Match started. Ticker will update as events occur...</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COLUMN 2: Upcoming Schedules & Spicy News -->
+        <div class="secondary-column">
+          
+          <!-- Upcoming Matches Schedule -->
+          <section class="grid-card schedule-card">
+            <div class="card-header">
+              <h2 class="card-title">Matchday Schedule</h2>
+              <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="live">Live</button>
+                <button class="filter-btn" data-filter="usa">USA</button>
+                <button class="filter-btn" data-filter="mex">Mexico</button>
+                <button class="filter-btn" data-filter="can">Canada</button>
+              </div>
+            </div>
+            
+            <div class="schedule-list" id="schedule-list-container">
+              <!-- Dynamically populated matches -->
+            </div>
+          </section>
+
+          <!-- Weather Watch for venues -->
+          <section class="grid-card weather-card">
+            <div class="card-header">
+              <h2 class="card-title">Venue Weather Watch</h2>
+              <span class="sub-header-desc">Dynamic weather impacts pitch speed & gameplay</span>
+            </div>
+            <div class="weather-grid" id="weather-grid-container">
+              <!-- Dynamically populated venue cards -->
+            </div>
+          </section>
+
+          <!-- Spicy News Carousel -->
+          <section class="grid-card news-card">
+            <div class="card-header">
+              <h2 class="card-title">Spicy World Cup Buzz</h2>
+              <div class="carousel-indicators" id="news-indicators">
+                <!-- Indicators dynamically added -->
+              </div>
+            </div>
+            <div class="news-content-area" id="news-content-container">
+              <!-- Single hot news item shown here -->
+            </div>
+          </section>
+
+        </div>
+
+      </main>
+
+      <!-- Footer Section -->
+      <footer class="app-footer">
+        <p>&copy; FIFA World Cup 2026 Fan Arena. Live telemetry powered by simulated sport engines. Designed with pitch dark aesthetic.</p>
+      </footer>
+    </div>
+
+    <!-- Modals for details if user clicks -->
+    <div class="modal" id="news-modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <h3 id="modal-title">News Title</h3>
+        <p id="modal-date" class="modal-date">Date</p>
+        <div id="modal-body">News Content Details...</div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
