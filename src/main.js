@@ -1,4 +1,3 @@
-import './style.css';
 
 // ----------------------------------------------------
 // 1. DATA DEFINITIONS & INITIAL STATE
