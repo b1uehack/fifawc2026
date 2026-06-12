@@ -628,10 +628,10 @@ body {
 
 /* Schedule List */
 .schedule-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-height: 380px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.8rem;
+  max-height: 400px;
   overflow-y: auto;
   padding-right: 0.25rem;
 }
@@ -1063,3 +1063,118 @@ body {
   }
 }
 
+/* Full Tournament Calendar Styling */
+.full-calendar-card {
+  width: 100%;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar-title-group {
+  flex: 1;
+  min-width: 280px;
+}
+
+.calendar-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  background: rgba(6, 14, 10, 0.8);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  border-radius: 6px;
+  width: 250px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-neon);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.25);
+}
+
+.calendar-table-wrapper {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.calendar-table th {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--primary-neon);
+  padding: 1rem 0.8rem;
+  border-bottom: 2px solid var(--border-color);
+  letter-spacing: 1px;
+}
+
+.calendar-table td {
+  padding: 1rem 0.8rem;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(0, 255, 102, 0.08);
+  vertical-align: middle;
+}
+
+.calendar-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.calendar-table tbody tr:hover {
+  background-color: rgba(0, 255, 102, 0.04);
+}
+
+.btn-calendar-track {
+  background: rgba(0, 255, 102, 0.05);
+  color: var(--primary-neon);
+  border: 1px solid var(--primary-neon);
+  transition: all 0.2s ease;
+}
+
+.btn-calendar-track:hover {
+  background: var(--primary-neon);
+  color: var(--bg-main);
+  box-shadow: 0 0 8px var(--primary-neon);
+}
+
+/* Mobile responsive styles for calendar */
+@media (max-width: 768px) {
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .calendar-controls {
+    width: 100%;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .calendar-controls .select-dropdown {
+    width: 100%;
+  }
+}

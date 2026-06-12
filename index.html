@@ -210,6 +210,52 @@
 
       </main>
 
+      <!-- FULL TOURNAMENT CALENDAR -->
+      <section class="grid-card full-calendar-card" style="margin-top: 1.5rem;">
+        <div class="card-header calendar-header">
+          <div class="calendar-title-group">
+            <h2 class="card-title">Full FIFA 2026 Match Timetable</h2>
+            <p class="sub-header-desc">Complete fixture list of all matches in IST timezone</p>
+          </div>
+          <div class="calendar-controls">
+            <input type="text" id="calendar-search" class="search-input" placeholder="🔍 Search country, group, stadium..." />
+            <select id="calendar-group-filter" class="select-dropdown">
+              <option value="all">All Groups</option>
+              <option value="Group A">Group A</option>
+              <option value="Group B">Group B</option>
+              <option value="Group C">Group C</option>
+              <option value="Group D">Group D</option>
+              <option value="Group E">Group E</option>
+              <option value="Group F">Group F</option>
+              <option value="Group G">Group G</option>
+              <option value="Group H">Group H</option>
+              <option value="Group I">Group I</option>
+              <option value="Group J">Group J</option>
+              <option value="Group K">Group K</option>
+              <option value="Group L">Group L</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calendar-table-wrapper">
+          <table class="calendar-table">
+            <thead>
+              <tr>
+                <th>Match</th>
+                <th>Group / Stage</th>
+                <th>Fixture</th>
+                <th>IST Date & Time</th>
+                <th>Venue</th>
+                <th>Sim Telemetry</th>
+              </tr>
+            </thead>
+            <tbody id="calendar-table-body">
+              <!-- Dynamically populated by main.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <!-- Footer Section -->
       <footer class="app-footer">
         <p>&copy; FIFA World Cup 2026 Fan Arena. Live telemetry powered by simulated sport engines. Designed with pitch dark aesthetic.</p>

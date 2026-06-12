@@ -202,6 +202,34 @@ const newsFeed = [
   }
 ];
 
+// Full Match Timetable (Group Stage to K.O.) - All in IST Timezone
+const fullTournamentSchedule = [
+  { id: 'm1', stage: 'Group A', team1: { name: 'United States', flag: '🇺🇸' }, team2: { name: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' }, istTime: 'June 12, 2026 - 05:30 AM IST', venue: 'MetLife Stadium, NY/NJ', trackable: true },
+  { id: 'm2', stage: 'Group C', team1: { name: 'Mexico', flag: '🇲🇽' }, team2: { name: 'Argentina', flag: '🇦🇷' }, istTime: 'June 12, 2026 - 07:30 AM IST', venue: 'Estadio Azteca, Mexico City', trackable: true },
+  { id: 'm3', stage: 'Group B', team1: { name: 'Canada', flag: '🇨🇦' }, team2: { name: 'Germany', flag: '🇩🇪' }, istTime: 'June 13, 2026 - 06:00 AM IST', venue: 'BC Place, Vancouver', trackable: true },
+  { id: 'm4', stage: 'Group F', team1: { name: 'Brazil', flag: '🇧🇷' }, team2: { name: 'Spain', flag: '🇪🇸' }, istTime: 'June 14, 2026 - 05:30 AM IST', venue: 'SoFi Stadium, Los Angeles', trackable: true },
+  { id: 'm5', stage: 'Group D', team1: { name: 'Japan', flag: '🇯🇵' }, team2: { name: 'France', flag: '🇫🇷' }, istTime: 'June 11, 2026 - 08:30 PM IST', venue: 'BMO Field, Toronto', trackable: true },
+  { id: 'm6', stage: 'Group E', team1: { name: 'Portugal', flag: '🇵🇹' }, team2: { name: 'Morocco', flag: '🇲🇦' }, istTime: 'June 15, 2026 - 09:30 PM IST', venue: 'Estadio BBVA, Monterrey', trackable: true },
+  { id: 'm7', stage: 'Group H', team1: { name: 'Italy', flag: '🇮🇹' }, team2: { name: 'Uruguay', flag: '🇺🇾' }, istTime: 'June 16, 2026 - 06:30 AM IST', venue: 'BMO Field, Toronto', trackable: true },
+  { id: 'm8', stage: 'Group G', team1: { name: 'Belgium', flag: '🇧🇪' }, team2: { name: 'South Korea', flag: '🇰🇷' }, istTime: 'June 17, 2026 - 04:30 AM IST', venue: 'MetLife Stadium, NY/NJ', trackable: true },
+  { id: 'm9', stage: 'Group I', team1: { name: 'Netherlands', flag: '🇳🇱' }, team2: { name: 'Senegal', flag: '🇸🇳' }, istTime: 'June 18, 2026 - 08:30 PM IST', venue: 'SoFi Stadium, Los Angeles', trackable: false },
+  { id: 'm10', stage: 'Group J', team1: { name: 'Croatia', flag: '🇭🇷' }, team2: { name: 'Nigeria', flag: '🇳🇬' }, istTime: 'June 19, 2026 - 09:30 PM IST', venue: 'BC Place, Vancouver', trackable: false },
+  { id: 'm11', stage: 'Group K', team1: { name: 'Colombia', flag: '🇨🇴' }, team2: { name: 'Denmark', flag: '🇩🇰' }, istTime: 'June 20, 2026 - 05:30 AM IST', venue: 'Estadio BBVA, Monterrey', trackable: false },
+  { id: 'm12', stage: 'Group L', team1: { name: 'Switzerland', flag: '🇨🇭' }, team2: { name: 'Cameroon', flag: '🇨🇲' }, istTime: 'June 20, 2026 - 08:30 PM IST', venue: 'Estadio Azteca, Mexico City', trackable: false },
+  { id: 'm13', stage: 'Group A', team1: { name: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' }, team2: { name: 'Ecuador', flag: '🇪🇨' }, istTime: 'June 21, 2026 - 06:00 AM IST', venue: 'MetLife Stadium, NY/NJ', trackable: false },
+  { id: 'm14', stage: 'Group A', team1: { name: 'United States', flag: '🇺🇸' }, team2: { name: 'Austria', flag: '🇦🇹' }, istTime: 'June 21, 2026 - 08:30 PM IST', venue: 'SoFi Stadium, Los Angeles', trackable: false },
+  { id: 'm15', stage: 'Group C', team1: { name: 'Argentina', flag: '🇦🇷' }, team2: { name: 'Saudi Arabia', flag: '🇸🇦' }, istTime: 'June 22, 2026 - 05:30 AM IST', venue: 'Estadio Azteca, Mexico City', trackable: false },
+  { id: 'm16', stage: 'Group B', team1: { name: 'Germany', flag: '🇩🇪' }, team2: { name: 'Australia', flag: '🇦🇺' }, istTime: 'June 22, 2026 - 09:30 PM IST', venue: 'BC Place, Vancouver', trackable: false },
+  { id: 'm17', stage: 'Group D', team1: { name: 'France', flag: '🇫🇷' }, team2: { name: 'Peru', flag: '🇵🇪' }, istTime: 'June 23, 2026 - 06:30 AM IST', venue: 'BMO Field, Toronto', trackable: false },
+  { id: 'm18', stage: 'Group F', team1: { name: 'Spain', flag: '🇪🇸' }, team2: { name: 'Ghana', flag: '🇬🇭' }, istTime: 'June 23, 2026 - 08:30 PM IST', venue: 'Estadio BBVA, Monterrey', trackable: false },
+  { id: 'm19', stage: 'Group F', team1: { name: 'Brazil', flag: '🇧🇷' }, team2: { name: 'Sweden', flag: '🇸🇪' }, istTime: 'June 24, 2026 - 05:30 AM IST', venue: 'SoFi Stadium, Los Angeles', trackable: false },
+  { id: 'm20', stage: 'Group H', team1: { name: 'Uruguay', flag: '🇺🇾' }, team2: { name: 'Iran', flag: '🇮🇷' }, istTime: 'June 24, 2026 - 09:30 PM IST', venue: 'BMO Field, Toronto', trackable: false },
+  { id: 'm21', stage: 'Group E', team1: { name: 'Portugal', flag: '🇵🇹' }, team2: { name: 'Poland', flag: '🇵🇱' }, istTime: 'June 25, 2026 - 06:00 AM IST', venue: 'MetLife Stadium, NY/NJ', trackable: false },
+  { id: 'm22', stage: 'Group H', team1: { name: 'Italy', flag: '🇮🇹' }, team2: { name: 'Tunisia', flag: '🇹🇳' }, istTime: 'June 25, 2026 - 08:30 PM IST', venue: 'BC Place, Vancouver', trackable: false },
+  { id: 'm23', stage: 'Group G', team1: { name: 'Belgium', flag: '🇧🇪' }, team2: { name: 'Algeria', flag: '🇩🇿' }, istTime: 'June 26, 2026 - 05:30 AM IST', venue: 'Estadio Azteca, Mexico City', trackable: false },
+  { id: 'm24', stage: 'Group G', team1: { name: 'South Korea', flag: '🇰🇷' }, team2: { name: 'Ukraine', flag: '🇺🇦' }, istTime: 'June 26, 2026 - 09:30 PM IST', venue: 'Estadio BBVA, Monterrey', trackable: false }
+];
+
 // Global State
 let matches = JSON.parse(JSON.stringify(initialMatches));
 let activeHeroId = 'm1';
@@ -270,7 +298,7 @@ function renderWeather() {
   `).join('');
 }
 
-// Render Schedule List with Filters
+// Render Schedule List with Filters in Widget format
 function renderSchedule() {
   const container = document.getElementById('schedule-list-container');
   if (!container) return;
@@ -296,33 +324,112 @@ function renderSchedule() {
 
     if (m.status === 'live') {
       statusBadge = `<span class="schedule-time-badge live">LIVE ${m.time}'</span>`;
-      scoreDisplay = `<span class="schedule-score">${m.score1} - ${m.score2}</span>`;
+      scoreDisplay = `<span class="schedule-score" style="font-size: 1.25rem; color: var(--primary-neon); font-weight: 800; font-family: var(--font-mono); text-shadow: 0 0 10px rgba(0, 255, 102, 0.3);">${m.score1} - ${m.score2}</span>`;
     } else if (m.status === 'completed') {
-      statusBadge = `<span class="schedule-time-badge">FT</span>`;
-      scoreDisplay = `<span class="schedule-score">${m.score1} - ${m.score2}</span>`;
+      statusBadge = `<span class="schedule-time-badge ft">FT</span>`;
+      scoreDisplay = `<span class="schedule-score" style="font-size: 1.1rem; color: var(--text-secondary); font-weight: bold; font-family: var(--font-mono);">${m.score1} - ${m.score2}</span>`;
     } else {
-      statusBadge = `<span class="schedule-time-badge">UPCOMING</span>`;
-      scoreDisplay = `<span class="schedule-vs">VS</span>`;
+      statusBadge = `<span class="schedule-time-badge scheduled">UPCOMING</span>`;
+      scoreDisplay = `<span class="schedule-vs" style="font-size: 0.8rem; color: var(--text-muted); font-weight: bold; border: 1px solid rgba(255,255,255,0.05); padding: 0.15rem 0.35rem; border-radius: 4px; background: rgba(0,0,0,0.2);">VS</span>`;
     }
 
+    // Shorten time display for card layout
+    const formattedTime = m.istTime.includes(' - ') ? m.istTime.split(' - ')[1] : m.istTime;
+
     return `
-      <div class="schedule-item ${isHero ? 'active-tracking' : ''} ${m.status === 'live' ? 'match-live' : ''} ${m.status === 'completed' ? 'match-completed' : ''}" data-id="${m.id}">
-        <div class="schedule-match-info">
-          <span class="schedule-meta">${m.stage} • ${m.venue.name}</span>
-          <div class="schedule-teams">
-            <span class="schedule-flag">${m.team1.flag}</span>
-            <span>${m.team1.name}</span>
-            ${scoreDisplay}
-            <span>${m.team2.name}</span>
-            <span class="schedule-flag">${m.team2.flag}</span>
-          </div>
-          <span class="schedule-ist-time">🇮🇳 IST: ${m.istTime}</span>
-        </div>
-        <div class="schedule-status">
+      <div class="schedule-item ${isHero ? 'active-tracking' : ''} ${m.status === 'live' ? 'match-live' : ''} ${m.status === 'completed' ? 'match-completed' : ''}" data-id="${m.id}" style="display: flex; flex-direction: column; justify-content: space-between; align-items: stretch; background: rgba(14, 28, 20, 0.45); border: 1px solid rgba(0, 255, 102, 0.1); padding: 0.9rem; border-radius: 12px; transition: all 0.2s ease; cursor: pointer; position: relative; gap: 0.8rem;">
+        <!-- Widget Header -->
+        <div class="widget-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <span class="schedule-meta" style="font-size: 0.65rem; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.5px;">${m.stage}</span>
           ${statusBadge}
-          <button class="schedule-track-btn" data-id="${m.id}">${isHero ? 'Tracking' : 'Track'}</button>
+        </div>
+        
+        <!-- Scoreboard Center -->
+        <div class="widget-scoreboard" style="display: flex; justify-content: space-between; align-items: center; margin: 0.2rem 0; gap: 0.5rem;">
+          <div class="widget-team" style="display: flex; flex-direction: column; align-items: center; flex: 1.2; text-align: center; gap: 0.3rem;">
+            <span class="schedule-flag" style="font-size: 1.8rem; line-height: 1;">${m.team1.flag}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80px;">${m.team1.name}</span>
+          </div>
+          
+          <div class="widget-score-divider" style="display: flex; flex-direction: column; align-items: center; min-width: 55px; justify-content: center;">
+            ${scoreDisplay}
+          </div>
+          
+          <div class="widget-team" style="display: flex; flex-direction: column; align-items: center; flex: 1.2; text-align: center; gap: 0.3rem;">
+            <span class="schedule-flag" style="font-size: 1.8rem; line-height: 1;">${m.team2.flag}</span>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80px;">${m.team2.name}</span>
+          </div>
+        </div>
+        
+        <!-- Widget Footer -->
+        <div class="widget-footer" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,255,102,0.06); padding-top: 0.6rem; width: 100%; gap: 0.4rem;">
+          <span class="schedule-ist-time" style="font-size: 0.65rem; color: var(--text-secondary); white-space: nowrap;">🇮🇳 ${formattedTime}</span>
+          <button class="schedule-track-btn ${isHero ? 'active' : ''}" data-id="${m.id}" style="padding: 0.25rem 0.5rem; font-size: 0.65rem; border-radius: 4px; border: 1px solid ${isHero ? 'var(--primary-neon)' : 'rgba(255,255,255,0.1)'}; background: ${isHero ? 'rgba(0,255,102,0.1)' : 'transparent'}; color: ${isHero ? 'var(--primary-neon)' : 'var(--text-secondary)'}; cursor: pointer; transition: all 0.2s ease; font-weight: 600; white-space: nowrap;">
+            ${isHero ? 'Tracking' : 'Track Stats'}
+          </button>
         </div>
       </div>
+    `;
+  }).join('');
+}
+
+// Render Full Tournament Calendar
+function renderFullCalendar() {
+  const tableBody = document.getElementById('calendar-table-body');
+  if (!tableBody) return;
+
+  const searchQuery = document.getElementById('calendar-search')?.value.toLowerCase() || '';
+  const groupFilter = document.getElementById('calendar-group-filter')?.value || 'all';
+
+  const filtered = fullTournamentSchedule.filter(m => {
+    // Group filter
+    if (groupFilter !== 'all' && m.stage !== groupFilter) return false;
+    
+    // Search query
+    if (searchQuery) {
+      const team1Match = m.team1.name.toLowerCase().includes(searchQuery);
+      const team2Match = m.team2.name.toLowerCase().includes(searchQuery);
+      const venueMatch = m.venue.toLowerCase().includes(searchQuery);
+      const stageMatch = m.stage.toLowerCase().includes(searchQuery);
+      if (!team1Match && !team2Match && !venueMatch && !stageMatch) return false;
+    }
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    tableBody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding: 2rem; color: var(--text-muted);">No matching fixtures found.</td></tr>`;
+    return;
+  }
+
+  tableBody.innerHTML = filtered.map(m => {
+    const activeMatch = matches.find(am => am.id === m.id);
+    let scoreOrVs = 'VS';
+    
+    if (activeMatch) {
+      scoreOrVs = `${activeMatch.score1} - ${activeMatch.score2}`;
+    }
+
+    const btnHtml = m.trackable 
+      ? `<button class="btn btn-secondary btn-calendar-track" data-id="${m.id}" style="padding: 0.2rem 0.5rem; font-size: 0.75rem; border-radius: 4px; border: 1px solid var(--primary-neon); cursor: pointer;">${activeHeroId === m.id ? 'Tracking' : 'Track Live'}</button>` 
+      : `<span style="font-size: 0.75rem; color: var(--text-muted);">Not in Sim</span>`;
+
+    const isLiveClass = (activeMatch && activeMatch.status === 'live') ? 'style="color: var(--primary-neon); font-weight: bold;"' : '';
+
+    return `
+      <tr>
+        <td style="font-weight:bold; color: var(--primary-neon);">${m.id.toUpperCase()}</td>
+        <td><span class="match-stage-badge" style="padding: 0.2rem 0.4rem; font-size: 0.7rem;">${m.stage}</span></td>
+        <td>
+          <div style="display:flex; align-items:center; gap: 0.5rem;">
+            <span>${m.team1.flag} ${m.team1.name}</span>
+            <span style="color: var(--accent-gold); font-weight: bold; margin: 0 0.5rem;">${scoreOrVs}</span>
+            <span>${m.team2.name} ${m.team2.flag}</span>
+          </div>
+        </td>
+        <td ${isLiveClass}>${m.istTime}</td>
+        <td style="color: var(--text-secondary); font-size: 0.85rem;">${m.venue}</td>
+        <td>${btnHtml}</td>
+      </tr>
     `;
   }).join('');
 }
@@ -564,6 +671,7 @@ function runSimulationTick() {
 
   renderHeroMatch();
   renderSchedule();
+  renderFullCalendar();
 }
 
 // ----------------------------------------------------
@@ -715,11 +823,39 @@ function setupEventHandlers() {
     document.getElementById('news-modal').classList.remove('active');
   });
 
-  document.getElementById('news-modal').addEventListener('click', (e) => {
-    if (e.target.id === 'news-modal') {
-      document.getElementById('news-modal').classList.remove('active');
-    }
-  });
+  // Calendar Search and Filter
+  const calSearch = document.getElementById('calendar-search');
+  if (calSearch) {
+    calSearch.addEventListener('input', renderFullCalendar);
+  }
+
+  const calFilter = document.getElementById('calendar-group-filter');
+  if (calFilter) {
+    calFilter.addEventListener('change', renderFullCalendar);
+  }
+
+  // Track buttons inside the calendar table
+  const calTableBody = document.getElementById('calendar-table-body');
+  if (calTableBody) {
+    calTableBody.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn-calendar-track');
+      if (!btn) return;
+
+      const id = btn.dataset.id;
+      activeHeroId = id;
+      
+      // Update UI
+      renderHeroMatch();
+      renderSchedule();
+      renderFullCalendar();
+
+      // Scroll smoothly to Live Tracking Center
+      const heroSection = document.getElementById('hero-match-section');
+      if (heroSection) {
+        heroSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
 }
 
 // Open News Modal
@@ -749,6 +885,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderWeather();
   renderSchedule();
   renderHeroMatch();
+  renderFullCalendar();
   setupEventHandlers();
 
   // Tick simulation loop
