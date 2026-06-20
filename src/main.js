@@ -434,6 +434,92 @@ function renderFullCalendar() {
   }).join('');
 }
 
+// Dynamic Standings Calculator
+function renderStandings() {
+  const container = document.getElementById('standings-table-body');
+  const groupSelect = document.getElementById('standings-group-filter');
+  if (!container || !groupSelect) return;
+
+  const activeGroup = groupSelect.value; // e.g. "Group A"
+
+  // 1. Find all teams belonging to this group in fullTournamentSchedule
+  const groupTeams = {};
+  
+  fullTournamentSchedule.forEach(m => {
+    if (m.stage === activeGroup) {
+      if (!groupTeams[m.team1.name]) {
+        groupTeams[m.team1.name] = { name: m.team1.name, flag: m.team1.flag, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, pts: 0 };
+      }
+      if (!groupTeams[m.team2.name]) {
+        groupTeams[m.team2.name] = { name: m.team2.name, flag: m.team2.flag, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0, gd: 0, pts: 0 };
+      }
+    }
+  });
+
+  // 2. Aggregate stats from active matches
+  matches.forEach(m => {
+    // Check if the match is in this group
+    const scheduleMatch = fullTournamentSchedule.find(sm => sm.id === m.id);
+    if (scheduleMatch && scheduleMatch.stage === activeGroup) {
+      // Only count matches that have started (live or completed)
+      if (m.status === 'live' || m.status === 'completed') {
+        const t1 = groupTeams[m.team1.name];
+        const t2 = groupTeams[m.team2.name];
+        
+        if (t1 && t2) {
+          t1.played++;
+          t2.played++;
+          t1.gf += m.score1;
+          t1.ga += m.score2;
+          t2.gf += m.score2;
+          t2.ga += m.score1;
+          
+          if (m.score1 > m.score2) {
+            t1.won++;
+            t1.pts += 3;
+            t2.lost++;
+          } else if (m.score2 > m.score1) {
+            t2.won++;
+            t2.pts += 3;
+            t1.lost++;
+          } else {
+            t1.drawn++;
+            t2.drawn++;
+            t1.pts += 1;
+            t2.pts += 1;
+          }
+          t1.gd = t1.gf - t1.ga;
+          t2.gd = t2.gf - t2.ga;
+        }
+      }
+    }
+  });
+
+  // Convert to array and sort
+  const standingsArray = Object.values(groupTeams);
+  standingsArray.sort((a, b) => {
+    if (b.pts !== a.pts) return b.pts - a.pts;
+    if (b.gd !== a.gd) return b.gd - a.gd;
+    return b.gf - a.gf;
+  });
+
+  // Render rows
+  container.innerHTML = standingsArray.map((t, idx) => `
+    <tr>
+      <td style="font-weight: bold; color: ${idx < 2 ? 'var(--primary-neon)' : 'var(--text-muted)'};">${idx + 1}</td>
+      <td style="font-weight: 600;">${t.flag} ${t.name}</td>
+      <td>${t.played}</td>
+      <td>${t.won}</td>
+      <td>${t.drawn}</td>
+      <td>${t.lost}</td>
+      <td>${t.gf}</td>
+      <td>${t.ga}</td>
+      <td>${t.gd > 0 ? '+' + t.gd : t.gd}</td>
+      <td style="font-weight: bold; color: var(--primary-neon);">${t.pts}</td>
+    </tr>
+  `).join('');
+}
+
 // Render Hero Match Box
 function renderHeroMatch() {
   const currentMatch = matches.find(m => m.id === activeHeroId);
@@ -447,6 +533,14 @@ function renderHeroMatch() {
   document.getElementById('hero-team1-name').textContent = currentMatch.team1.name;
   document.getElementById('hero-team2-flag').textContent = currentMatch.team2.flag;
   document.getElementById('hero-team2-name').textContent = currentMatch.team2.name;
+
+  // Goal Buttons labels
+  const btnGoal1 = document.getElementById('btn-goal-1');
+  const btnGoal2 = document.getElementById('btn-goal-2');
+  if (btnGoal1 && btnGoal2) {
+    btnGoal1.textContent = `⚽ Goal ${currentMatch.team1.name}`;
+    btnGoal2.textContent = `⚽ Goal ${currentMatch.team2.name}`;
+  }
 
   // Scores
   document.getElementById('hero-score-1').textContent = currentMatch.score1;
@@ -672,6 +766,7 @@ function runSimulationTick() {
   renderHeroMatch();
   renderSchedule();
   renderFullCalendar();
+  renderStandings();
 }
 
 // ----------------------------------------------------
@@ -704,6 +799,7 @@ function handleGoalManual(teamIndex) {
   triggerGoalFlash();
   renderHeroMatch();
   renderSchedule();
+  renderStandings();
 }
 
 function handleRandomEvent() {
@@ -856,6 +952,36 @@ function setupEventHandlers() {
       }
     });
   }
+
+  // Google Sports Hub Tab Switching
+  document.querySelectorAll('.tab-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Remove active class from all links and panes
+      document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+
+      // Add active class to clicked link
+      link.classList.add('active');
+
+      // Add active class to corresponding tab pane
+      const tabId = link.dataset.tab;
+      const pane = document.getElementById(`pane-${tabId}`);
+      if (pane) {
+        pane.classList.add('active');
+      }
+
+      // If switched to standings, render it
+      if (tabId === 'standings') {
+        renderStandings();
+      }
+    });
+  });
+
+  // Standings group filter selector event
+  const standingsFilter = document.getElementById('standings-group-filter');
+  if (standingsFilter) {
+    standingsFilter.addEventListener('change', renderStandings);
+  }
 }
 
 // Open News Modal
@@ -886,6 +1012,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSchedule();
   renderHeroMatch();
   renderFullCalendar();
+  renderStandings();
   setupEventHandlers();
 
   // Tick simulation loop

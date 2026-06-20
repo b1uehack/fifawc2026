@@ -50,124 +50,137 @@
         </div>
       </header>
 
-      <!-- Main Dashboard Grid Layout -->
-      <main class="dashboard-grid">
+      <!-- Google Sports Hub Navigation Tabs -->
+      <nav class="sports-tabs">
+        <button class="tab-link active" data-tab="live">🏟️ Live Telemetry</button>
+        <button class="tab-link" data-tab="matches">📅 Matches & Fixtures</button>
+        <button class="tab-link" data-tab="standings">📈 Standings</button>
+        <button class="tab-link" data-tab="news">📰 Spicy Buzz</button>
+        <button class="tab-link" data-tab="weather">🌤️ Venues</button>
+      </nav>
+
+      <!-- Main Dashboard Content Panes -->
+      <div class="tab-content" style="margin-top: 1rem;">
         
-        <!-- COLUMN 1: Hero Live Match Widget & Statistics -->
-        <section class="grid-card hero-card" id="hero-match-section">
-          <div class="card-header">
-            <h2 class="card-title">Live Tracking Center</h2>
-            <div class="match-stage-badge" id="hero-match-stage">Group Stage • Group A</div>
-          </div>
-
-          <div class="hero-match-display">
-            <!-- Team 1 -->
-            <div class="team-display left">
-              <div class="team-flag-placeholder" id="hero-team1-flag">🇺🇸</div>
-              <h3 class="team-name" id="hero-team1-name">United States</h3>
-              <span class="team-role">HOST</span>
-            </div>
-
-            <!-- Score / Versus info -->
-            <div class="score-display-container">
-              <div class="live-badge">LIVE</div>
-              <div class="score-numbers">
-                <span class="score-digit" id="hero-score-1">0</span>
-                <span class="score-divider">:</span>
-                <span class="score-digit" id="hero-score-2">0</span>
+        <!-- Tab 1: Live Telemetry (Tracking Center) -->
+        <div class="tab-pane active" id="pane-live">
+          <main class="dashboard-grid single-col-layout">
+            <!-- COLUMN 1: Hero Live Match Widget & Statistics -->
+            <section class="grid-card hero-card" id="hero-match-section" style="grid-column: span 2;">
+              <div class="card-header">
+                <h2 class="card-title">Live Tracking Center</h2>
+                <div class="match-stage-badge" id="hero-match-stage">Group Stage • Group A</div>
               </div>
-              <div class="match-time" id="hero-match-time">12'</div>
-            </div>
 
-            <!-- Team 2 -->
-            <div class="team-display right">
-              <div class="team-flag-placeholder" id="hero-team2-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
-              <h3 class="team-name" id="hero-team2-name">England</h3>
-              <span class="team-role">CHALLENGER</span>
-            </div>
-          </div>
+              <div class="hero-match-display">
+                <!-- Team 1 -->
+                <div class="team-display left">
+                  <div class="team-flag-placeholder" id="hero-team1-flag">🇺🇸</div>
+                  <h3 class="team-name" id="hero-team1-name">United States</h3>
+                  <span class="team-role">HOST</span>
+                </div>
 
-          <!-- Simulation Quick Triggers -->
-          <div class="simulation-triggers">
-            <button id="btn-goal-1" class="btn btn-goal" data-team="1">⚽ Goal USA</button>
-            <button id="btn-shootout" class="btn btn-event">💥 Random Event</button>
-            <button id="btn-goal-2" class="btn btn-goal" data-team="2">⚽ Goal ENG</button>
-          </div>
+                <!-- Score / Versus info -->
+                <div class="score-display-container">
+                  <div class="live-badge">LIVE</div>
+                  <div class="score-numbers">
+                    <span class="score-digit" id="hero-score-1">0</span>
+                    <span class="score-divider">:</span>
+                    <span class="score-digit" id="hero-score-2">0</span>
+                  </div>
+                  <div class="match-time" id="hero-match-time">12'</div>
+                </div>
 
-          <!-- Stadium and Weather Overlay Info -->
-          <div class="match-meta-info">
-            <div class="meta-item">
-              <span class="meta-label">VENUE</span>
-              <span class="meta-value" id="hero-match-venue">MetLife Stadium, NY/NJ</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">ATTENDANCE</span>
-              <span class="meta-value" id="hero-match-attendance">82,500</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">VENUE WEATHER</span>
-              <span class="meta-value" id="hero-match-weather">🌧️ 18°C, Light Rain</span>
-            </div>
-          </div>
-
-          <!-- Live Match Stats Grid -->
-          <div class="stats-panel">
-            <h4 class="section-subtitle">Match Statistics</h4>
-            
-            <!-- Stat 1: Possession -->
-            <div class="stat-row">
-              <div class="stat-meta">
-                <span class="stat-value-left" id="stat-pos-1">50%</span>
-                <span class="stat-name">POSSESSION</span>
-                <span class="stat-value-right" id="stat-pos-2">50%</span>
+                <!-- Team 2 -->
+                <div class="team-display right">
+                  <div class="team-flag-placeholder" id="hero-team2-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+                  <h3 class="team-name" id="hero-team2-name">England</h3>
+                  <span class="team-role">CHALLENGER</span>
+                </div>
               </div>
-              <div class="stat-bar-container">
-                <div class="stat-bar-left" id="bar-pos-1" style="width: 50%;"></div>
-                <div class="stat-bar-right" id="bar-pos-2" style="width: 50%;"></div>
-              </div>
-            </div>
 
-            <!-- Stat 2: Shots -->
-            <div class="stat-row">
-              <div class="stat-meta">
-                <span class="stat-value-left" id="stat-shots-1">4</span>
-                <span class="stat-name">SHOTS (ON TARGET)</span>
-                <span class="stat-value-right" id="stat-shots-2">3</span>
+              <!-- Simulation Quick Triggers -->
+              <div class="simulation-triggers">
+                <button id="btn-goal-1" class="btn btn-goal" data-team="1">⚽ Goal USA</button>
+                <button id="btn-shootout" class="btn btn-event">💥 Random Event</button>
+                <button id="btn-goal-2" class="btn btn-goal" data-team="2">⚽ Goal ENG</button>
               </div>
-              <div class="stat-bar-container">
-                <div class="stat-bar-left" id="bar-shots-1" style="width: 55%;"></div>
-                <div class="stat-bar-right" id="bar-shots-2" style="width: 45%;"></div>
-              </div>
-            </div>
 
-            <!-- Stat 3: Fouls & Cards -->
-            <div class="cards-stat-row">
-              <div class="cards-count-left">
-                <span class="yellow-card-stat" id="stat-yc-1">0</span> <span class="red-card-stat" id="stat-rc-1">0</span>
+              <!-- Stadium and Weather Overlay Info -->
+              <div class="match-meta-info">
+                <div class="meta-item">
+                  <span class="meta-label">VENUE</span>
+                  <span class="meta-value" id="hero-match-venue">MetLife Stadium, NY/NJ</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">ATTENDANCE</span>
+                  <span class="meta-value" id="hero-match-attendance">82,500</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">VENUE WEATHER</span>
+                  <span class="meta-value" id="hero-match-weather">🌧️ 18°C, Light Rain</span>
+                </div>
               </div>
-              <span class="stat-name">CARDS (Y / R)</span>
-              <div class="cards-count-right">
-                <span class="yellow-card-stat" id="stat-yc-2">0</span> <span class="red-card-stat" id="stat-rc-2">0</span>
+
+              <!-- Live Match Stats Grid -->
+              <div class="stats-panel">
+                <h4 class="section-subtitle">Match Statistics</h4>
+                
+                <!-- Stat 1: Possession -->
+                <div class="stat-row">
+                  <div class="stat-meta">
+                    <span class="stat-value-left" id="stat-pos-1">50%</span>
+                    <span class="stat-name">POSSESSION</span>
+                    <span class="stat-value-right" id="stat-pos-2">50%</span>
+                  </div>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar-left" id="bar-pos-1" style="width: 50%;"></div>
+                    <div class="stat-bar-right" id="bar-pos-2" style="width: 50%;"></div>
+                  </div>
+                </div>
+
+                <!-- Stat 2: Shots -->
+                <div class="stat-row">
+                  <div class="stat-meta">
+                    <span class="stat-value-left" id="stat-shots-1">4</span>
+                    <span class="stat-name">SHOTS (ON TARGET)</span>
+                    <span class="stat-value-right" id="stat-shots-2">3</span>
+                  </div>
+                  <div class="stat-bar-container">
+                    <div class="stat-bar-left" id="bar-shots-1" style="width: 55%;"></div>
+                    <div class="stat-bar-right" id="bar-shots-2" style="width: 45%;"></div>
+                  </div>
+                </div>
+
+                <!-- Stat 3: Fouls & Cards -->
+                <div class="cards-stat-row">
+                  <div class="cards-count-left">
+                    <span class="yellow-card-stat" id="stat-yc-1">0</span> <span class="red-card-stat" id="stat-rc-1">0</span>
+                  </div>
+                  <span class="stat-name">CARDS (Y / R)</span>
+                  <div class="cards-count-right">
+                    <span class="yellow-card-stat" id="stat-yc-2">0</span> <span class="red-card-stat" id="stat-rc-2">0</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <!-- Match Timeline Ticker -->
-          <div class="timeline-panel">
-            <h4 class="section-subtitle">Live Match Timeline</h4>
-            <div class="timeline-container" id="timeline-events">
-              <div class="timeline-empty">Match started. Ticker will update as events occur...</div>
-            </div>
-          </div>
-        </section>
+              <!-- Match Timeline Ticker -->
+              <div class="timeline-panel">
+                <h4 class="section-subtitle">Live Match Timeline</h4>
+                <div class="timeline-container" id="timeline-events">
+                  <div class="timeline-empty">Match started. Ticker will update as events occur...</div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
 
-        <!-- COLUMN 2: Upcoming Schedules & Spicy News -->
-        <div class="secondary-column">
-          
-          <!-- Upcoming Matches Schedule -->
+        <!-- Tab 2: Matches & Fixtures -->
+        <div class="tab-pane" id="pane-matches">
+          <!-- Upcoming Matches Schedule Grid -->
           <section class="grid-card schedule-card">
             <div class="card-header">
-              <h2 class="card-title">Matchday Schedule</h2>
+              <h2 class="card-title">Live Matchday Grid</h2>
               <div class="filter-group">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="live">Live</button>
@@ -182,18 +195,98 @@
             </div>
           </section>
 
-          <!-- Weather Watch for venues -->
-          <section class="grid-card weather-card">
-            <div class="card-header">
-              <h2 class="card-title">Venue Weather Watch</h2>
-              <span class="sub-header-desc">Dynamic weather impacts pitch speed & gameplay</span>
+          <!-- Full Tournament Calendar -->
+          <section class="grid-card full-calendar-card" style="margin-top: 1.5rem;">
+            <div class="card-header calendar-header">
+              <div class="calendar-title-group">
+                <h2 class="card-title">Full FIFA 2026 Match Timetable</h2>
+                <p class="sub-header-desc">Complete fixture list of all matches in IST timezone</p>
+              </div>
+              <div class="calendar-controls">
+                <input type="text" id="calendar-search" class="search-input" placeholder="🔍 Search country, group, stadium..." />
+                <select id="calendar-group-filter" class="select-dropdown">
+                  <option value="all">All Groups</option>
+                  <option value="Group A">Group A</option>
+                  <option value="Group B">Group B</option>
+                  <option value="Group C">Group C</option>
+                  <option value="Group D">Group D</option>
+                  <option value="Group E">Group E</option>
+                  <option value="Group F">Group F</option>
+                  <option value="Group G">Group G</option>
+                  <option value="Group H">Group H</option>
+                  <option value="Group I">Group I</option>
+                  <option value="Group J">Group J</option>
+                  <option value="Group K">Group K</option>
+                  <option value="Group L">Group L</option>
+                </select>
+              </div>
             </div>
-            <div class="weather-grid" id="weather-grid-container">
-              <!-- Dynamically populated venue cards -->
+
+            <div class="calendar-table-wrapper">
+              <table class="calendar-table">
+                <thead>
+                  <tr>
+                    <th>Match</th>
+                    <th>Group / Stage</th>
+                    <th>Fixture</th>
+                    <th>IST Date & Time</th>
+                    <th>Venue</th>
+                    <th>Sim Telemetry</th>
+                  </tr>
+                </thead>
+                <tbody id="calendar-table-body">
+                  <!-- Dynamically populated by main.js -->
+                </tbody>
+              </table>
             </div>
           </section>
+        </div>
 
-          <!-- Spicy News Carousel -->
+        <!-- Tab 3: Group Standings -->
+        <div class="tab-pane" id="pane-standings">
+          <section class="grid-card standings-card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+              <div class="title-group">
+                <h2 class="card-title">Group Standings</h2>
+                <p class="sub-header-desc">Live-computed positions from simulated match scores</p>
+              </div>
+              <select id="standings-group-filter" class="select-dropdown">
+                <option value="Group A">Group A</option>
+                <option value="Group B">Group B</option>
+                <option value="Group C">Group C</option>
+                <option value="Group D">Group D</option>
+                <option value="Group E">Group E</option>
+                <option value="Group F">Group F</option>
+                <option value="Group G">Group G</option>
+                <option value="Group H">Group H</option>
+              </select>
+            </div>
+            <div class="calendar-table-wrapper" style="margin-top: 1rem;">
+              <table class="calendar-table">
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Team</th>
+                    <th>Played</th>
+                    <th>Won</th>
+                    <th>Drawn</th>
+                    <th>Lost</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                    <th>GD</th>
+                    <th style="color: var(--primary-neon);">Points</th>
+                  </tr>
+                </thead>
+                <tbody id="standings-table-body">
+                  <!-- Dynamically computed by main.js -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <!-- Tab 4: Spicy Buzz -->
+        <div class="tab-pane" id="pane-news">
           <section class="grid-card news-card">
             <div class="card-header">
               <h2 class="card-title">Spicy World Cup Buzz</h2>
@@ -205,56 +298,22 @@
               <!-- Single hot news item shown here -->
             </div>
           </section>
-
         </div>
 
-      </main>
-
-      <!-- FULL TOURNAMENT CALENDAR -->
-      <section class="grid-card full-calendar-card" style="margin-top: 1.5rem;">
-        <div class="card-header calendar-header">
-          <div class="calendar-title-group">
-            <h2 class="card-title">Full FIFA 2026 Match Timetable</h2>
-            <p class="sub-header-desc">Complete fixture list of all matches in IST timezone</p>
-          </div>
-          <div class="calendar-controls">
-            <input type="text" id="calendar-search" class="search-input" placeholder="🔍 Search country, group, stadium..." />
-            <select id="calendar-group-filter" class="select-dropdown">
-              <option value="all">All Groups</option>
-              <option value="Group A">Group A</option>
-              <option value="Group B">Group B</option>
-              <option value="Group C">Group C</option>
-              <option value="Group D">Group D</option>
-              <option value="Group E">Group E</option>
-              <option value="Group F">Group F</option>
-              <option value="Group G">Group G</option>
-              <option value="Group H">Group H</option>
-              <option value="Group I">Group I</option>
-              <option value="Group J">Group J</option>
-              <option value="Group K">Group K</option>
-              <option value="Group L">Group L</option>
-            </select>
-          </div>
+        <!-- Tab 5: Venues & Weather -->
+        <div class="tab-pane" id="pane-weather">
+          <section class="grid-card weather-card">
+            <div class="card-header">
+              <h2 class="card-title">Venue Weather Watch</h2>
+              <span class="sub-header-desc">Dynamic weather impacts pitch speed & gameplay</span>
+            </div>
+            <div class="weather-grid" id="weather-grid-container">
+              <!-- Dynamically populated venue cards -->
+            </div>
+          </section>
         </div>
 
-        <div class="calendar-table-wrapper">
-          <table class="calendar-table">
-            <thead>
-              <tr>
-                <th>Match</th>
-                <th>Group / Stage</th>
-                <th>Fixture</th>
-                <th>IST Date & Time</th>
-                <th>Venue</th>
-                <th>Sim Telemetry</th>
-              </tr>
-            </thead>
-            <tbody id="calendar-table-body">
-              <!-- Dynamically populated by main.js -->
-            </tbody>
-          </table>
-        </div>
-      </section>
+      </div>
 
       <!-- Footer Section -->
       <footer class="app-footer">
